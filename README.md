@@ -1,6 +1,6 @@
 # TalkFin
 
-Full stack financial and networking app for investors. TalkFin users can look up stock market data, create posts to discuss investments, ideas, trading tips and platforms, or any finance related topics. Users can search for any stock symbol of their choice and receive its respective trading chart, as well as financial data such as P/E Ratio, Dividend Yield, Profit Margin, and more. This app was built taking the DevConnector app by Brad Traversy as foundation.
+Full stack financial and networking app for investors. TalkFin allows users to look up stock market data, create posts to discuss investments, ideas, trading tips and platforms, or any finance related topics. Users can search for any stock symbol of their choice and receive its respective trading chart, as well as financial data such as P/E Ratio, Dividend Yield, Profit Margin, and more. This app was built taking the DevConnector app by Brad Traversy as foundation.
 
 ## Images
 

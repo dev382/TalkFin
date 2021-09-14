@@ -38,8 +38,6 @@ const Stock = ({ getStock, stockData, match }) => {
   const previousPrice = stockChartValues.previousPrice;
   const priceChange = Math.round(((Math.abs((previousPrice-lastPrice)/previousPrice))*100 + Number.EPSILON) * 100) / 100;
   
-  console.log(stockData);
-
   return (
     <div>
       <Link className="btn btn-light my-1" to="/stocks">

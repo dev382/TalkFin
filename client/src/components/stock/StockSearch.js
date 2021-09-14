@@ -9,7 +9,7 @@ import { getStockSearchData } from '../../actions/stock';
 /* eslint-disable react-hooks/exhaustive-deps */
 
 const StockSearch = ({ getStockSearchData, stockSearchData }) => {
-    
+
     const [term, setTerm] = useState("");
     const [results, setResults] = useState([]);
     const [notFound, setNotFound] = useState("");
@@ -32,8 +32,6 @@ const StockSearch = ({ getStockSearchData, stockSearchData }) => {
             setNotFound("No more search results found")
         };
       };
-
-    console.log(results);
 
     if (results || !results) {
 

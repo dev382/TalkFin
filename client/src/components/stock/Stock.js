@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import isDeepEqual from 'fast-deep-equal/react';
+import useDeepCompareEffect from 'use-deep-compare-effect'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getStock } from '../../actions/stock';
@@ -12,24 +12,19 @@ import Plot from 'react-plotly.js';
 const Stock = ({ getStock, stockData, match }) => {
 
   const [stockChartValues, setStockChartValues] = useState([]);
-  const stockDataRef = useRef(stockData);
 
-  if (!isDeepEqual(stockDataRef.current, stockData)) {
-    stockDataRef.current = stockData
-  };
-
-  useEffect(() => {
-    fetchStock();
-  }, [stockDataRef.current]);
+  useDeepCompareEffect(() => {
+      fetchStock();
+    }, [stockData]);
 
   const fetchStock = () => {
     getStock(match.params.stocksymbol);
     let stockChartXValues = [];
     let stockChartYValues = [];
 
-    for (var key in stockDataRef.current['Time Series (Daily)']) {
+    for (var key in stockData['Time Series (Daily)']) {
       stockChartXValues.push(key);
-      stockChartYValues.push(stockDataRef.current['Time Series (Daily)'][key]['4. close']);
+      stockChartYValues.push(stockData['Time Series (Daily)'][key]['4. close']);
     }
     setStockChartValues({  
       X: stockChartXValues, 
@@ -43,7 +38,7 @@ const Stock = ({ getStock, stockData, match }) => {
   const previousPrice = stockChartValues.previousPrice;
   const priceChange = Math.round(((Math.abs((previousPrice-lastPrice)/previousPrice))*100 + Number.EPSILON) * 100) / 100;
   
-  console.log(stockDataRef.current);
+  console.log(stockData);
 
   return (
     <div>

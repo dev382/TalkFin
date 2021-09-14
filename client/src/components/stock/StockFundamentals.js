@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import isDeepEqual from 'fast-deep-equal/react';
+import React, { useState } from 'react';
+import useDeepCompareEffect from 'use-deep-compare-effect'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
@@ -10,15 +10,10 @@ import { getStockFundamentals } from '../../actions/stock';
 const StockFundamentals = ({ getStockFundamentals, stockFundamentals, match }) => {
 
   const [fundamentalsData, setFundamentalsData] = useState([]);
-  const stockFundamentalsRef = useRef(stockFundamentals);
 
-  if (!isDeepEqual(stockFundamentalsRef.current, stockFundamentals)) {
-    stockFundamentalsRef.current = stockFundamentals
-  };
-
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     fetchStockFundamentals();
-  }, [stockFundamentalsRef.current]);
+  }, [stockFundamentals]);
 
   const fetchStockFundamentals = () => {
     getStockFundamentals(match.params.stocksymbol);

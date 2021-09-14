@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import isDeepEqual from 'fast-deep-equal/react';
+import useDeepCompareEffect from 'use-deep-compare-effect'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
@@ -9,24 +9,20 @@ import { getStockSearchData } from '../../actions/stock';
 /* eslint-disable react-hooks/exhaustive-deps */
 
 const StockSearch = ({ getStockSearchData, stockSearchData }) => {
+    
     const [term, setTerm] = useState("");
     const [results, setResults] = useState([]);
     const [notFound, setNotFound] = useState("");
-    const stockSearchDataRef = useRef(stockSearchData);
 
-    if (!isDeepEqual(stockSearchDataRef.current, stockSearchData)) {
-        stockSearchDataRef.current = stockSearchData
-    };
-
-    useEffect(() => {
+    useDeepCompareEffect(() => {
         if (term) {
             fetchStockSearchData();
         }
-    }, [stockSearchDataRef.current]);
+    }, [stockSearchData]);
 
     const fetchStockSearchData = () => {
         getStockSearchData(term);
-        setResults(stockSearchDataRef.current.bestMatches)
+        setResults(stockSearchData.bestMatches)
     };
 
     const onFormSubmit = event => {

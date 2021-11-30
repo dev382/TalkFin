@@ -58,13 +58,13 @@ Full stack financial and networking app for investors. TalkFin allows users to l
 
 ## Functionalities
 
-- Users who are not athenticated have access to the registration and login routes. They also have access to the profiles and profile routes, where they can view other investors profiles while logged out.
+- Users who are not authenticated have access to the registration and login routes. They also have access to the profiles and profile routes, where they can view other investors profiles while logged out.
 
 - Authenticated users land on the search page where they can look up any stock ticker or company. Searches query the Alpha Vantage API and clicking on any of the search results will take users to that company's route where they can view its financial data and daily time frame chart. The chart is displayed using Plotly and displays daily price variations for the last 100 days, as well as the percentage price variance between the last two days.
 
 - While logged in, users will also be able to access the posts and post routes, which will give them CRUD capabilities. In the posts route, users will be able to create a new post and like or dislike any of the posts. They can also delete their own posts from this route or join the discussion within any of the posts, which will take them to that post's route. From the post route users also have the ability to comment or delete their own comments.
 
-- Logged in users can also access the dashboard route where they will be able to edit their profile, add their investing/trading platforms, and add their educational background. From within the dashboard, users will also be able to delete any platforms or education credentials that they've added, as well as the option to delete their acccount.
+- Logged in users can also access the dashboard route where they will be able to edit their profile, add their investing/trading platforms, and add their educational background. From within the dashboard, users will also be able to delete any platforms or education credentials that they've added, as well as the option to delete their account.
 
 ## Limitations
 
@@ -97,9 +97,7 @@ This app contains secret keys which have been hidden in a .json configuration fi
 {
     "mongoURI": "",
     "jwtSecret": "",
-    "alphaVantageKey1": "",
-    "alphaVantageKey2": "",
-    "alphaVantageKey3": ""
+    "alphaVantageKey": "",
 }
 ```
 
@@ -111,7 +109,7 @@ git clone https://github.com/dev382/TalkFin.git
 
 ### Install dependencies
 
-In the directory of the folder named TalkFin, which contains the files of the repositiory, run the following command from your terminal:
+In the directory of the folder named TalkFin, which contains the files of the repository, run the following command from your terminal:
 
 ```sh
 npm install
